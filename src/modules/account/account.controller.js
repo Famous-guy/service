@@ -1,8 +1,14 @@
 import express from "express";
-import {authenticate} from "./account.service.js";
+import passport from 'passport';
 
-const accountRouter = express.Router();
-
-accountRouter.get("/", authenticate);
-
-export {accountRouter};
+/**
+ * @base_path /api/v1/account
+ */
+export const accountRouter = express.Router()
+  .post(
+    "/authenticate",
+    passport.authenticate("local"),
+    (req, res) => {
+      return res.status(200).json({message: "Authenticated", user: req.user});
+    }
+  );

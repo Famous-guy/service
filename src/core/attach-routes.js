@@ -1,4 +1,5 @@
 import express from "express";
+
 import {accountRouter} from "../modules/account/account.controller.js";
 
 /**
@@ -11,5 +12,9 @@ export function attachRoutes(app) {
   router.use("/account", accountRouter);
 
   app.use("/api/v1", router);
+
+  app.get("/", (_, res) => {
+    res.status(200).json({message: "Hello World!"});
+  });
 
 }
