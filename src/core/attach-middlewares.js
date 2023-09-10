@@ -4,6 +4,8 @@ import helmet from "helmet";
 import passport from "passport";
 import LocalStrategy from "passport-local";
 
+import {errorCatcher} from "../middlewares/index.js";
+
 /**
  * 
  * @param {express.Application} app
@@ -55,5 +57,7 @@ export function attachMiddlewares(app) {
     });
 
   });
+
+  app.use(errorCatcher);
 
 }
