@@ -5,7 +5,8 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "dev": "node --watch src/index.js"
+    "dev": "node --watch src/index.js",
+    "test": "mocha --recursive src/__test__/**/*.test.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,10 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
-    "@types/node": "^20.5.9"
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.5.9",
+    "chai": "^4.3.8",
+    "chai-http": "^4.4.0",
+    "mocha": "^10.2.0"
   }
 }
