@@ -12,6 +12,19 @@ This template deploys a simple service with fundamental components setup, built-
 
 `Express.js` application with [`Passport.js`](https://github.com/jaredhanson/passport) to protect your precious todos, as well as [`chai`](https://github.com/chaijs/chai) on [`mocha`](https://github.com/mochajs/mocha) for testing.
 
+## Using this starter
+
+This service has the following endpoints:
+
+- _`/`_: the index. Useful to healthcheck.
+- _`/api/v1/account`_: protected resource. Will give you user data if authenticated.
+- _`/api/v1/account/authenticate`_: where you would log in. Any email+password would work.
+
+Besides, in case you are almost there understanding, after having successfully logged in, the below cookie will be attached to every request to the service, and it is this cookie that acts as a key to open `Passport.js` door to the protected resources sitting behind it.
+
+![image](https://github.com/edmondwinston/railway-nodejs/assets/132081506/e13af1a8-038c-46d9-8f64-34c6c7e168ec)
+
+
 ## Architecture notes
 
 - Requests to your service flow pass your middlewares to your routes. Both of them are attached to the main application separately, and you can always add more in either [`src/core/attach-routes.js`](https://github.com/edmondwinston/railway-nodejs/blob/main/src/core/attach-routes.js) or [`src/core/attach-middlewares.js`](https://github.com/edmondwinston/railway-nodejs/blob/main/src/core/attach-middlewares.js).
