@@ -7,6 +7,7 @@ const app = express();
 configureServer(app);
 
 chai.use(chaiHttp);
+// This enables line 21.
 chai.should();
 
 describe("Account module:", () => {
@@ -17,7 +18,7 @@ describe("Account module:", () => {
       chai.request(app)
         .get("/api/v1/account")
         .end((err, res) => {
-          res.should.have.status(401);
+          res.should.have.status(401); // <- Because you are not logged in.
           done();
         });
     });
@@ -28,11 +29,14 @@ describe("Account module:", () => {
       await agent
         .post("/api/v1/account/authenticate")
         .send({
-          email: "an@email.com",
-          password: "pw"
+          email: "an@email.com", // Random
+          password: "pw"         // credentials.
         });
       const r = await agent.get("/api/v1/account");
 
+      // Think of the agent as a client making requests to your sevice.
+      // This passes because the agent has successfully logged in,
+      // which you can observe by looking for the cookie header.
       chai.expect(r).to.have.status(200);
       chai.expect(r.body).to.have.property("message");
       chai.expect(r.body).to.have.property("user");

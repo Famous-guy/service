@@ -16,6 +16,8 @@ export function attachMiddlewares(app) {
   app.use(express.json());
   app.use(express.urlencoded({extended: true}));
 
+  // Helmet helps secure the service by setting various HTTP headers.
+  // @see https://helmetjs.github.io/
   app.use(helmet());
   app.use(cors({
     origin: process.env.CORS_ORIGIN || "http://localhost:3000",
@@ -28,6 +30,8 @@ export function attachMiddlewares(app) {
     resave: false,
     saveUninitialized: false,
     cookie: {
+      // Secure cookie only available over https, but your localhost is http,
+      // so this must be false during development.
       secure: process.env.NODE_ENV === "production",
     },
   }));
