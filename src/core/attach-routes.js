@@ -15,8 +15,12 @@ export function attachRoutes(app) {
   // so the full path of `accountRouter` is `/api/v1/account`.
   app.use("/api/v1", router);
 
+  app.get("/healthcheck", (_, res) => {
+    return res.status(200).json({message: "Service is healthy."});
+  });
+
   app.get("/", (_, res) => {
-    res.status(200).json({message: "Hello World!"});
+    return res.status(200).json({message: "Welcome to the service. This is the root path."});
   });
 
 }
