@@ -16,7 +16,7 @@ This template deploys a simple service with fundamental components setup, built-
 
 This service has the following endpoints:
 
-- _`/`_: the index. Useful to healthcheck.
+- _`/healthcheck`_: ping to check for service availability.
 - _`/api/v1/account`_: protected resource. Will give you user data if authenticated.
 - _`/api/v1/account/authenticate`_: where you would log in. Any email+password would work.
 
